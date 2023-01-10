@@ -11,6 +11,8 @@ if ( args.Length != 1)
 string[] customExceptTable =
 {
     "new SimpleMenuItem(",
+    "ProcedureAsync = async",
+    "MethodAsync = async",
 };
 
 foreach (var fullpath in Directory.EnumerateFiles(args[0],"*.cs", SearchOption.AllDirectories))
@@ -45,7 +47,7 @@ void checkOneFile(string fullpath)
                 if (index1 + 5 < s.Length) after = s[index1 + 5];
                 if (!char.IsAsciiLetter(before) && !char.IsAsciiLetter(after))
                 {
-                    if (s.IndexOf("=>", from) >= 0) break;  // OK goto next step
+                    if (s.IndexOf("=>", from) >= 0) goto nextLine;  // OK goto next step
                     int index2 = s.IndexOf("Async", from);
                     if (index2 >= 0)
                     {
