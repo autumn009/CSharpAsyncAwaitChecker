@@ -43,9 +43,10 @@ void checkOneFile(string fullpath)
                 }
             }
             else
-                break;
+                goto nextStep;
         }
         // await check
+        nextStep:
         int index3 = s.IndexOf("Async");
         if (index3 >= 0)
         {
