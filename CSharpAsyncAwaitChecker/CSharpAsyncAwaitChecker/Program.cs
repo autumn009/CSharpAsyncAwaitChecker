@@ -29,6 +29,9 @@ void checkOneFile(string fullpath)
     {
         var s = reader.ReadLine();
         if (s == null) break;
+        // コメント行は読み飛ばす
+        if (s.TrimStart().StartsWith("//")) continue;
+        // 禁止文字列を含む行は読み飛ばす
         foreach (var item in customExceptTable)
         {
             if (s.Contains(item)) goto nextLine;
