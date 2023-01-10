@@ -10,6 +10,7 @@ if ( args.Length != 1)
 /// 警告の例外とする文字列をここで定義する
 string[] customExceptTable =
 {
+    "/* DIABLE ASYNC WARN */",
     "new SimpleMenuItem(",
     "ProcedureAsync = async",
     "MethodAsync = async",
