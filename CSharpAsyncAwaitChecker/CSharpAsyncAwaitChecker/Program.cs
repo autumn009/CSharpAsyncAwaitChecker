@@ -29,7 +29,7 @@ void checkOneFile(string fullpath)
                 char before = ' ', after = ' ';
                 if (index1 > 0) before = s[index1 - 1];
                 if (index1 + 5 < s.Length) after = s[index1 + 5];
-                if (char.IsWhiteSpace(before) && char.IsWhiteSpace(after))
+                if (!char.IsAsciiLetter(before) && !char.IsAsciiLetter(after))
                 {
                     if (s.IndexOf("=>", from) >= 0) break;  // OK goto next step
                     int index2 = s.IndexOf("Async", from);
@@ -59,7 +59,7 @@ void checkOneFile(string fullpath)
                     char before = ' ', after = ' ';
                     if (index2 > 0) before = s[index2 - 1];
                     if (index2 + 5 < s.Length) after = s[index2 + 5];
-                    if (char.IsWhiteSpace(before) && char.IsWhiteSpace(after))
+                    if (!char.IsAsciiLetter(before) && !char.IsAsciiLetter(after))
                     {
                         // do nothing
                     }
