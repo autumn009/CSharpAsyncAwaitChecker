@@ -6,6 +6,7 @@
 
 foreach (var fullpath in Directory.EnumerateFiles(args[0],"*.cs", SearchOption.AllDirectories))
 {
+    if (fullpath.Contains(".g.")) continue;
     checkOneFile(fullpath);
 }
 
