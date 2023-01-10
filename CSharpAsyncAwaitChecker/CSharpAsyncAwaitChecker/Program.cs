@@ -4,7 +4,7 @@
     return;
 }
 
-foreach (var fullpath in Directory.EnumerateFiles(args[0],"*.cs"))
+foreach (var fullpath in Directory.EnumerateFiles(args[0],"*.cs", SearchOption.AllDirectories))
 {
     checkOneFile(fullpath);
 }
