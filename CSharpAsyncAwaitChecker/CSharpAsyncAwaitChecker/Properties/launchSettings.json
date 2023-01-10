@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CSharpAsyncAwaitChecker": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\xgit\\WANGF\\WANGF\\waFirstOtsukai"
+    }
+  }
+}
