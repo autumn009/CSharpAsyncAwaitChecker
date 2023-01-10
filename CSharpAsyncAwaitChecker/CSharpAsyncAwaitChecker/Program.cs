@@ -36,7 +36,7 @@ void checkOneFile(string fullpath)
                     {
                         char after2 = ' ';
                         if (index2 + 5 < s.Length) after2 = s[index2 + 5];
-                        if (char.IsWhiteSpace(after2)) continue;  // OK goto next line
+                        if (!char.IsAsciiLetter(after2)) continue;  // OK goto next line
                     }
                     Console.WriteLine($"{fullpath}:{lineNumber} {s}");
                 }
@@ -50,7 +50,7 @@ void checkOneFile(string fullpath)
         {
             char after2 = ' ';
             if (index3 + 5 < s.Length) after2 = s[index3 + 5];
-            if (char.IsWhiteSpace(after2))
+            if (!char.IsAsciiLetter(after2))
             {
                 int index2 = s.IndexOf("await");
                 if (index2 >= 0)
