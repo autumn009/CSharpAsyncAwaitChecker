@@ -6,6 +6,13 @@ if ( args.Length != 1)
     return;
 }
 
+/// 例外文字列テーブル
+/// 警告の例外とする文字列をここで定義する
+string[] customExceptTable =
+{
+    "new SimpleMenuItem(",
+};
+
 foreach (var fullpath in Directory.EnumerateFiles(args[0],"*.cs", SearchOption.AllDirectories))
 {
     if (fullpath.Contains(".g.")) continue;
@@ -19,6 +26,11 @@ void checkOneFile(string fullpath)
     {
         var s = reader.ReadLine();
         if (s == null) break;
+        foreach (var item in customExceptTable)
+        {
+            if (s.Contains(item)) goto nextLine;
+        }
+
         // async check
         int from = 0;
         for (; ; )
