@@ -12,7 +12,7 @@ foreach (var fullpath in Directory.EnumerateFiles(args[0],"*.cs"))
 void checkOneFile(string fullpath)
 {
     using var reader = new StreamReader(fullpath);
-    for (int lineNumber=0; ; lineNumber++)
+    for (int lineNumber = 0; ; lineNumber++)
     {
         var s = reader.ReadLine();
         if (s == null) break;
@@ -21,7 +21,7 @@ void checkOneFile(string fullpath)
         for (; ; )
         {
             if (from >= s.Length) break;
-            int index1 = s.IndexOf("async",from);
+            int index1 = s.IndexOf("async", from);
             if (index1 >= 0)
             {
                 from = index1 + 5;
@@ -35,7 +35,7 @@ void checkOneFile(string fullpath)
                     if (index2 >= 0)
                     {
                         char after2 = ' ';
-                        if (index2 + 5 < s.Length) after2 = s[index1 + 5];
+                        if (index2 + 5 < s.Length) after2 = s[index2 + 5];
                         if (char.IsWhiteSpace(after2)) continue;  // OK goto next line
                     }
                     Console.WriteLine($"{fullpath}:{lineNumber} {s}");
@@ -45,10 +45,27 @@ void checkOneFile(string fullpath)
                 break;
         }
         // await check
-
-
-
-
-
+        int index3 = s.IndexOf("Async");
+        if (index3 >= 0)
+        {
+            char after2 = ' ';
+            if (index3 + 5 < s.Length) after2 = s[index3 + 5];
+            if (char.IsWhiteSpace(after2))
+            {
+                int index2 = s.IndexOf("await");
+                if (index2 >= 0)
+                {
+                    char before = ' ', after = ' ';
+                    if (index2 > 0) before = s[index2 - 1];
+                    if (index2 + 5 < s.Length) after = s[index2 + 5];
+                    if (char.IsWhiteSpace(before) && char.IsWhiteSpace(after))
+                    {
+                        // do nothing
+                    }
+                    else
+                        Console.WriteLine($"{fullpath}:{lineNumber} {s}");
+                }
+            }
+        }
     }
 }
