@@ -1,4 +1,6 @@
-﻿if( args.Length != 1)
+﻿using System.Reflection.Metadata.Ecma335;
+
+if ( args.Length != 1)
 {
     Console.WriteLine("usage: CShapAsyncAwaitChecker DIR_NAME");
     return;
@@ -37,7 +39,7 @@ void checkOneFile(string fullpath)
                     {
                         char after2 = ' ';
                         if (index2 + 5 < s.Length) after2 = s[index2 + 5];
-                        if (!char.IsAsciiLetter(after2)) continue;  // OK goto next line
+                        if (!char.IsAsciiLetter(after2)) goto nextLine;  // OK goto next line
                     }
                     Console.WriteLine($"{fullpath}:{lineNumber} {s}");
                 }
@@ -62,12 +64,12 @@ void checkOneFile(string fullpath)
                     if (index2 + 5 < s.Length) after = s[index2 + 5];
                     if (!char.IsAsciiLetter(before) && !char.IsAsciiLetter(after))
                     {
-                        // do nothing
+                        continue;     // OK goto next line
                     }
-                    else
-                        Console.WriteLine($"{fullpath}:{lineNumber} {s}");
                 }
             }
+            Console.WriteLine($"{fullpath}:{lineNumber} {s}");
         }
+    nextLine:;
     }
 }

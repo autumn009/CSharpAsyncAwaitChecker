@@ -2,7 +2,7 @@
   "profiles": {
     "CSharpAsyncAwaitChecker": {
       "commandName": "Project",
-      "commandLineArgs": "C:\\xgit\\WANGF\\WANGF\\waFirstOtsukai"
+      "commandLineArgs": "C:\\xdelme\\ConsoleApp21\\ConsoleApp21"
     }
   }
 }
