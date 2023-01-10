@@ -25,7 +25,7 @@ foreach (var fullpath in Directory.EnumerateFiles(args[0],"*.cs", SearchOption.A
 void checkOneFile(string fullpath)
 {
     using var reader = new StreamReader(fullpath);
-    for (int lineNumber = 0; ; lineNumber++)
+    for (int lineNumber = 1; ; lineNumber++)
     {
         var s = reader.ReadLine();
         if (s == null) break;
