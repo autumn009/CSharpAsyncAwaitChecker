@@ -70,6 +70,7 @@ void checkOneFile(string fullpath)
         int index3 = s.IndexOf("Async");
         if (index3 >= 0)
         {
+            if (s.Contains("=>")) goto nextLine;    // IT's safe
             char after2 = ' ';
             if (index3 + 5 < s.Length) after2 = s[index3 + 5];
             if (!char.IsAsciiLetter(after2))
