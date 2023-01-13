@@ -14,6 +14,7 @@ string[] customExceptTable =
     "new SimpleMenuItem(",
     "ProcedureAsync = async",
     "MethodAsync = async",
+    "Task<WeatherForecast[]>",
 };
 
 foreach (var fullpath in Directory.EnumerateFiles(args[0],"*.cs", SearchOption.AllDirectories))
